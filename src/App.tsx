@@ -15,7 +15,6 @@ export default function App() {
 
   return (
     <div className={styles.container}>
-      {/* <Headline /> */}
       <Canvas />
       {explore && !intro && <Navigation />}
       {!explore && !intro && <Button
