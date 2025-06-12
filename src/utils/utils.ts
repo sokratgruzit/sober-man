@@ -15,3 +15,4 @@ export function clamp(num: number, min: number, max: number) {
 export function randomPhase() {
   return Math.random() * 2 * Math.PI;
 }
+

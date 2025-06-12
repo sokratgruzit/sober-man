@@ -1,0 +1,60 @@
+.container {
+    font-family: "Bloc";
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    padding: 50px;
+}
+
+.titleWrap {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    font-size: 72px;
+    text-align: center;
+    position: relative;
+    margin-right: 50px;
+}
+
+.rightBlock {
+    position: absolute;
+    right: 11%;
+    top: 36%;
+    width: 25%;
+}
+
+.descr1 {
+    font-size: 16px;
+    width: 100%;
+    color: #787878;
+    line-height: 30px;
+}
+
+.leftBlock {
+    position: absolute;
+    left: 11%;
+    top: 29%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.descr2 {
+    font-size: 16px;
+    width: 100%;
+    color: rgb(211, 47, 47);
+    line-height: 30px;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 50px;
+        margin-right: 80px;
+    }
+}

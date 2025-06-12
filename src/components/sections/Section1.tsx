@@ -1,12 +1,10 @@
-export default function Section1({ onNext, onPrev, isFirst, isLast }: { onNext: () => void; onPrev: () => void; isFirst: boolean; isLast: boolean }) {
+import styles from "./Section1.module.css";
+
+export default function Section1() {
   return (
-    <div style={{ textAlign: "center" }}>
+    <div className={styles.container}>
       <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Вторая секция</h2>
       <p>Анимация будет строиться из другой композиции треугольников.</p>
-      <div style={{ marginTop: "2rem" }}>
-        {!isFirst && <button onClick={onPrev} style={{ marginRight: "1rem" }}>Назад</button>}
-        {!isLast && <button onClick={onNext}>Вперед</button>}
-      </div>
     </div>
   );
 }
