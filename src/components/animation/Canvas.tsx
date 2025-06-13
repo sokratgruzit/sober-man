@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useAppStore } from "../../store/useAppStore";
 import { clamp, parseColor, randomPhase } from "../../utils/utils";
-import type { TriangleData } from "../../utils/objects";
+import type { TriangleData } from "../../types";
 import { getTrianglesData } from "../../utils/objects";
 import styles from "./Canvas.module.css";
 
@@ -12,21 +12,25 @@ export const Canvas = () => {
   const trianglesRef = useRef<TriangleData[]>([]);
   const { setIntro, setWindowWidth, currentSection, explore } = useAppStore();
 
-  const BASE_WIDTH = 750;
-  const BASE_HEIGHT = 740;
-
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d")!;
 
-    const center = () => ({
-      x: canvas.width / 2,
-      y: canvas.height / 2,
-    });
-
     function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+
+      // Устанавливаем canvas в физические пиксели
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+
+      // Устанавливаем визуальный размер (CSS)
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+
+      // Масштабируем контекст под плотность пикселей
+      ctx.setTransform(1, 0, 0, 1, 0, 0); // сброс трансформаций
+      ctx.scale(dpr, dpr);
+
       setWindowWidth(window.innerWidth);
     }
 
@@ -39,26 +43,25 @@ export const Canvas = () => {
     function draw(elapsed: number) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const scaleX = canvas.width / BASE_WIDTH;
-      const scaleY = canvas.height / BASE_HEIGHT;
+      const BASE_WIDTH = 750;
+      const BASE_HEIGHT = 740;
+      const scaleX = canvas.clientWidth / BASE_WIDTH;
+      const scaleY = canvas.clientHeight / BASE_HEIGHT;
       const scale = Math.min(scaleX, scaleY);
-      const c = center();
+      const c = { x: canvas.clientWidth / 2, y: canvas.clientHeight / 2 };
 
       for (const t of trianglesRef.current) {
-        // Интерполяция позиций
         t.x = lerp(t.x, t.targetX ?? t.x, 0.05);
         t.y = lerp(t.y, t.targetY ?? t.y, 0.05);
         t.rotation = lerp(t.rotation, t.targetRotation ?? t.rotation, 0.05);
 
         const targetColor = parseColor(t.targetColor ?? t.color);
-       
         const shift = Math.floor(Math.sin(elapsed * 3 + t.phase) * 50);
         const r = clamp(targetColor.r + shift, 0, 255);
         const g = clamp(targetColor.g, 0, 255);
         const b = clamp(targetColor.b, 0, 255);
         ctx.fillStyle = `rgb(${r},${g},${b})`;
 
-        // Колебание
         const offsetY = Math.sin(elapsed * 2 + t.phase) * 3 * scale;
         const drawX = t.x;
         const drawY = t.y + offsetY / scale;
@@ -67,7 +70,6 @@ export const Canvas = () => {
         ctx.translate(c.x + drawX * scale, c.y + drawY * scale);
         ctx.rotate((t.rotation * Math.PI) / 180);
 
-        // Интерполяция точек (если есть)
         const currentPoints = t.points;
         const targetPoints = t.targetPoints ?? currentPoints;
         const points = currentPoints.map((p, i) => {
@@ -100,8 +102,7 @@ export const Canvas = () => {
     }
 
     frameId = requestAnimationFrame(animate);
-
-    setTimeout(() => setIntro(false), 2000)
+    setTimeout(() => setIntro(false), 2000);
 
     return () => {
       cancelAnimationFrame(frameId);
