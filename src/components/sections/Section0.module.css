@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
-    height: calc(100vh - env(safe-area-inset-bottom));
+    height: 100dvh;
     padding-bottom: calc(50px + env(safe-area-inset-bottom)) !important;
 }
 
