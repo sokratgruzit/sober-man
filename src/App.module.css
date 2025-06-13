@@ -3,8 +3,7 @@
   width: 100vw;
   margin: 0;
   padding: 0;
-  height: calc(100vh - env(safe-area-inset-bottom));
-  padding-bottom: env(safe-area-inset-bottom);
+  height: 100dvh;
 }
 
 .img {
