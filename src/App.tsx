@@ -15,6 +15,7 @@ import BackgroundMusic from "./components/music/BackgroundMusic";
 
 import styles from "./App.module.css";
 
+//App component
 export default function App() {
   const colors = ["#98BFF6", "#EDB948", "#63C5AB", "#F4696B", "#EF9F64", "#64d6e2", "#FDAED4", "#785ebb"];
 
