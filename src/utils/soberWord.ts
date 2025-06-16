@@ -1176,5 +1176,639 @@ export const soberWord: Omit<TriangleData, "phase">[] = [
         scatterY: 0,
         scale: 3,
         z: -3
-    }
+    },
+    // Man - start
+    // m - start
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: -220, y: 300 },
+            { x: -176, y: 304 },
+            { x: -249, y: 255 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: -235, y: 210 },
+            { x: -255, y: 250 },
+            { x: -174, y: 304 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#0091EA",
+        rotation: 0,
+        points: [
+            { x: -235, y: 210 },
+            { x: -255, y: 250 },
+            { x: -320, y: 250 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#0091EA",
+        rotation: 0,
+        points: [
+            { x: -285, y: 300 },
+            { x: -255, y: 250 },
+            { x: -320, y: 250 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#4FC3F7",
+        rotation: 0,
+        points: [
+            { x: -235, y: 210 },
+            { x: -342, y: 210 },
+            { x: -320, y: 250 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#03A9F4",
+        rotation: 0,
+        points: [
+            { x: -397, y: 286 },
+            { x: -360, y: 305 },
+            { x: -320, y: 250 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#4FC3F7",
+        rotation: 0,
+        points: [
+            { x: -397, y: 286 },
+            { x: -342, y: 210 },
+            { x: -320, y: 250 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: -397, y: 286 },
+            { x: -360, y: 305 },
+            { x: -397, y: 329 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: -344, y: 402 },
+            { x: -360, y: 305 },
+            { x: -325, y: 362 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#03A9F4",
+        rotation: 0,
+        points: [
+            { x: -344, y: 402 },
+            { x: -360, y: 305 },
+            { x: -397, y: 329 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: -220, y: 300 },
+            { x: -250, y: 362 },
+            { x: -229, y: 402 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: -220, y: 300 },
+            { x: -176, y: 304 },
+            { x: -229, y: 402 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    // a - start
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: 60, y: 300 },
+            { x: 104, y: 304 },
+            { x: 31, y: 255 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: 45, y: 210 },
+            { x: 25, y: 250 },
+            { x: 106, y: 304 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#0091EA",
+        rotation: 0,
+        points: [
+            { x: 45, y: 210 },
+            { x: 25, y: 250 },
+            { x: -40, y: 250 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#0091EA",
+        rotation: 0,
+        points: [
+            { x: -80, y: 305 },
+            { x: -75, y: 320 },
+            { x: 51, y: 305 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#4FC3F7",
+        rotation: 0,
+        points: [
+            { x: 45, y: 210 },
+            { x: -62, y: 210 },
+            { x: -40, y: 250 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#03A9F4",
+        rotation: 0,
+        points: [
+            { x: -117, y: 286 },
+            { x: -80, y: 305 },
+            { x: -40, y: 250 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#4FC3F7",
+        rotation: 0,
+        points: [
+            { x: -117, y: 286 },
+            { x: -62, y: 210 },
+            { x: -40, y: 250 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: -117, y: 286 },
+            { x: -80, y: 305 },
+            { x: -117, y: 329 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: -64, y: 402 },
+            { x: -80, y: 305 },
+            { x: -45, y: 362 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#03A9F4",
+        rotation: 0,
+        points: [
+            { x: -64, y: 402 },
+            { x: -80, y: 305 },
+            { x: -117, y: 329 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: 60, y: 300 },
+            { x: 30, y: 362 },
+            { x: 51, y: 402 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: 60, y: 300 },
+            { x: 104, y: 304 },
+            { x: 51, y: 402 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    // n - start
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: 340, y: 300 },
+            { x: 384, y: 304 },
+            { x: 311, y: 255 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: 325, y: 210 },
+            { x: 305, y: 250 },
+            { x: 386, y: 304 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#0091EA",
+        rotation: 0,
+        points: [
+            { x: 325, y: 210 },
+            { x: 305, y: 250 },
+            { x: 240, y: 250 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#4FC3F7",
+        rotation: 0,
+        points: [
+            { x: 325, y: 210 },
+            { x: 218, y: 210 },
+            { x: 240, y: 250 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#03A9F4",
+        rotation: 0,
+        points: [
+            { x: 163, y: 286 },
+            { x: 200, y: 305 },
+            { x: 240, y: 250 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#4FC3F7",
+        rotation: 0,
+        points: [
+            { x: 163, y: 286 },
+            { x: 218, y: 210 },
+            { x: 240, y: 250 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: 163, y: 286 },
+            { x: 200, y: 305 },
+            { x: 163, y: 329 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: 216, y: 402 },
+            { x: 200, y: 305 },
+            { x: 235, y: 362 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#03A9F4",
+        rotation: 0,
+        points: [
+            { x: 216, y: 402 },
+            { x: 200, y: 305 },
+            { x: 163, y: 329 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: 340, y: 300 },
+            { x: 310, y: 362 },
+            { x: 321, y: 402 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
+    {
+        x: 0,
+        y: 0,
+        size: .7,
+        color: "#1976D2",
+        rotation: 0,
+        points: [
+            { x: 340, y: 300 },
+            { x: 384, y: 304 },
+            { x: 321, y: 402 }
+        ],
+        startX: 0,      
+        startY: 0,
+        scatterX: 0,   
+        scatterY: 0,
+        scale: 3,
+        z: -3
+    },
 ];

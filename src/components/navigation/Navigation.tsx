@@ -23,7 +23,7 @@ export function Navigation() {
   const [navPosition, setNavPosition] = useState<string>("right");
   const [stylePosition, setStylePosition] = useState<string>("right");
 
-  const { currentSection, setSection, windowWidth } = useAppStore();
+  const { currentSection, setSection, windowWidth, explore } = useAppStore();
 
   const navControls = useAnimation();
   const numberControls = useAnimation();
@@ -41,8 +41,8 @@ export function Navigation() {
     setStylePosition("");
 
     if (position === "right") {
-      let x = window.innerWidth <= 768 ? window.innerWidth - 160 : window.innerWidth - 230;
-      let y = window.innerWidth <= 768 ? window.innerHeight / 2 - 80 / 2 : window.innerHeight / 2 - 100 / 2;
+      let x = window.innerWidth <= 768 ? window.innerWidth - 140 : window.innerWidth - 230;
+      let y = window.innerWidth <= 768 ? window.innerHeight / 2 - 40 / 2 : window.innerHeight / 2 - 100 / 2;
 
       navControls.start({
         x: x,               
@@ -159,7 +159,7 @@ export function Navigation() {
   return (
     <motion.div animate={navControls} className={`${styles.container} ${styles[stylePosition]}`}>
       <Button
-        onClick={() => setSection(Math.max(0, currentSection - 1))}
+        onClick={() => explore ? setSection(Math.max(0, currentSection - 1)) : null}
         size="small"
         borderColor="#FFF"
         left="0px"
@@ -177,7 +177,7 @@ export function Navigation() {
         </motion.span>
       </div>
       <Button
-        onClick={() => setSection(Math.min(7, currentSection + 1))}
+        onClick={() => explore ? setSection(Math.min(7, currentSection + 1)) : null}
         size="small"
         borderColor="#FFF"
         left={window.innerWidth <= 768 ? "160px" : "240px"}

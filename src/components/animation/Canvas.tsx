@@ -1,36 +1,158 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAppStore } from "../../store/useAppStore";
+import { motion, useAnimation } from "framer-motion";
+
 import { clamp, parseColor, randomPhase } from "../../utils/utils";
 import type { TriangleData } from "../../types";
 import { getTrianglesData } from "../../utils/objects";
+
 import styles from "./Canvas.module.css";
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 export const Canvas = () => {
+  const [scaleFactor, setScaleFactor] = useState<number>(1);
+  const [canvasPos, setCanvasPos] = useState<React.CSSProperties>({
+    left: "0px",
+    top: "0px"
+  });
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const trianglesRef = useRef<TriangleData[]>([]);
-  const { setIntro, setWindowWidth, currentSection, explore } = useAppStore();
+  const canvasControls = useAnimation();
+  const { setIntro, setWindowWidth, currentSection, explore, windowWidth } = useAppStore();
+
+  const positionCanvas = (width: number, section: number, explore: boolean) => {
+    if (!explore) {
+      let s = .7;
+
+      setCanvasPos({
+        left: window.innerWidth / 2 - 750,
+        top: window.innerHeight / 2 - 750
+      });
+
+      if (width <= 1024) s = .5;
+      if (width <= 768) s = .4;
+      if (width <= 440) s = .3;
+
+      setScaleFactor(s);
+
+      canvasControls.start({
+        translateX: window.innerWidth / 2 - 750,
+        translateY: window.innerHeight / 2 - 750,
+        transition: {
+          duration: .5,
+          ease: "easeInOut"
+        }
+      });
+    } else {
+      let s = 1;
+      let pos = {
+        left: window.innerWidth / 2 - 750,
+        top: window.innerHeight / 2 - 750
+      };
+
+      if (section === 0) {
+        s = .4;
+        pos = {
+          left: window.innerWidth / 2 - 750,
+          top: -626
+        };
+
+        if (width >= 768) {
+          s = .8;
+
+          pos = {
+            left: -480,
+            top: -482
+          };
+        }
+
+        if (width >= 1150) {
+          s = 1.2;
+
+          pos = {
+            left: -445,
+            top: -490
+          };
+        }
+
+        if (width >= 1440) {
+          s = 1.5;
+
+          pos = {
+            left: -273,
+            top: -391
+          };
+        }
+      }
+
+      if (section === 1) {
+        s = .6;
+          
+        pos = {
+          left: window.innerWidth - 835,
+          top: -536
+        };
+
+        if (width >= 1150) {
+          s = 1.5;
+
+          pos = {
+            left: window.innerWidth - 955,
+            top: -377
+          };
+        }
+
+        if (width >= 1440) {
+          s = 2;
+
+          pos = {
+            left: window.innerWidth - 1020,
+            top: -250
+          };
+        }
+      }
+
+      if (section === 2) {
+        s = .4;
+
+        if (width >= 1150) {
+          s = .6;
+        }
+      }
+
+      setScaleFactor(s);
+      // setCanvasPos(pos);
+      canvasControls.start({
+        translateX: pos.left,
+        translateY: pos.top,
+        transition: {
+          duration: .5,
+          ease: "easeInOut"
+        }
+      });
+    }
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d")!;
 
     function resize() {
+      const width = window.innerWidth;
       const dpr = window.devicePixelRatio || 1;
 
-      // Устанавливаем canvas в физические пиксели
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
+      canvas.width = 1500 * dpr;
+      canvas.height = 1500 * dpr;
 
-      // Устанавливаем визуальный размер (CSS)
-      canvas.style.width = `${window.innerWidth}px`;
-      canvas.style.height = `${window.innerHeight}px`;
+      canvas.style.width = `${1500}px`;
+      canvas.style.height = `${1500}px`;
 
-      // Масштабируем контекст под плотность пикселей
-      ctx.setTransform(1, 0, 0, 1, 0, 0); // сброс трансформаций
+      ctx.setTransform(1, 0, 0, 1, 0, 0); 
       ctx.scale(dpr, dpr);
 
+      positionCanvas(width, currentSection, explore);
       setWindowWidth(window.innerWidth);
     }
 
@@ -43,24 +165,33 @@ export const Canvas = () => {
     function draw(elapsed: number) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const BASE_WIDTH = 750;
-      const BASE_HEIGHT = 740;
+      const BASE_WIDTH = 1150;
       const scaleX = canvas.clientWidth / BASE_WIDTH;
-      const scaleY = canvas.clientHeight / BASE_HEIGHT;
-      const scale = Math.min(scaleX, scaleY);
+      const scale = (scaleX) * scaleFactor;
       const c = { x: canvas.clientWidth / 2, y: canvas.clientHeight / 2 };
 
       for (const t of trianglesRef.current) {
-        t.x = lerp(t.x, t.targetX ?? t.x, 0.05);
-        t.y = lerp(t.y, t.targetY ?? t.y, 0.05);
-        t.rotation = lerp(t.rotation, t.targetRotation ?? t.rotation, 0.05);
+        if (t.inactive) {
+          t.orbitAngle! += t.orbitSpeed!;
+          const cx = canvas.clientWidth / 2;
+          const cy = canvas.clientHeight / 2;
+          t.x = cx + Math.cos(t.orbitAngle!) * t.orbitRadius!;
+          t.y = cy + Math.sin(t.orbitAngle!) * t.orbitRadius!;
+          t.rotation += 0.05;
+        } else {
+          t.x = lerp(t.x, t.targetX ?? t.x, 0.05);
+          t.y = lerp(t.y, t.targetY ?? t.y, 0.05);
+          t.rotation = lerp(t.rotation, t.targetRotation ?? t.rotation, 0.05);
+        }
 
         const targetColor = parseColor(t.targetColor ?? t.color);
         const shift = Math.floor(Math.sin(elapsed * 3 + t.phase) * 50);
         const r = clamp(targetColor.r + shift, 0, 255);
         const g = clamp(targetColor.g, 0, 255);
         const b = clamp(targetColor.b, 0, 255);
-        ctx.fillStyle = `rgb(${r},${g},${b})`;
+        const alpha = t.inactive ? t.alpha ?? 0.2 : 1;
+
+        ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
 
         const offsetY = Math.sin(elapsed * 2 + t.phase) * 3 * scale;
         const drawX = t.x;
@@ -108,7 +239,7 @@ export const Canvas = () => {
       cancelAnimationFrame(frameId);
       window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [scaleFactor, currentSection, explore]);
 
   useEffect(() => {
     const { target } = getTrianglesData(currentSection, explore);
@@ -116,29 +247,43 @@ export const Canvas = () => {
     for (let i = 0; i < trianglesRef.current.length; i++) {
       const triangle = trianglesRef.current[i];
       const targetTriangle = target[i];
-      if (!targetTriangle) continue;
 
-      triangle.targetX = targetTriangle.x;
-      triangle.targetY = targetTriangle.y;
-      triangle.targetRotation = targetTriangle.rotation;
-      triangle.targetColor = targetTriangle.color;
-      triangle.targetPoints = targetTriangle.points;
+      if (targetTriangle) {
+        triangle.inactive = false;
+        triangle.targetX = targetTriangle.x;
+        triangle.targetY = targetTriangle.y;
+        triangle.targetRotation = targetTriangle.rotation;
+        triangle.targetColor = targetTriangle.color;
+        triangle.targetPoints = targetTriangle.points;
+      } else {
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        const dx = triangle.x - cx;
+        const dy = triangle.y - cy;
+        const orbitRadius = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx);
+
+        triangle.inactive = true;
+        triangle.orbitRadius = orbitRadius;
+        triangle.orbitAngle = angle;
+        triangle.orbitSpeed = (Math.random() * 0.005) + 0.001; 
+        triangle.alpha = 0.15;
+      }
     }
 
-    // Добавляем новые
     for (let i = trianglesRef.current.length; i < target.length; i++) {
       const t = target[i];
       trianglesRef.current.push({
         ...t,
         phase: randomPhase(),
-        targetX: t.x,
-        targetY: t.y,
-        targetRotation: t.rotation,
+        targetX: (Math.random() - 0.5) * window.innerWidth / 2,
+        targetY: (Math.random() - 0.5) * window.innerHeight / 2,
+        targetRotation: Math.random() * 100,
         targetColor: t.color,
         targetPoints: t.points,
       });
     }
-  }, [currentSection, explore]);
+  }, [currentSection, explore, windowWidth]);
 
   useEffect(() => {
     const { mutated, target } = getTrianglesData(currentSection, explore);
@@ -157,5 +302,13 @@ export const Canvas = () => {
     });
   }, []);
 
-  return <canvas ref={canvasRef} className={styles.canvas} />;
+  return <motion.canvas 
+    ref={canvasRef} 
+    className={styles.canvas}
+    animate={canvasControls} 
+    // style={{
+    //   top: canvasPos.top,
+    //   ...(currentSection === 0 ? { left: canvasPos.left } : { right: canvasPos.left }),
+    // }} 
+  />;
 };

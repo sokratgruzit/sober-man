@@ -1,20 +1,16 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-import styles from "./Typing.module.css";
+import type { TypingTextProps } from "../../types";
 
-interface TypingTextProps {
-    text: string;
-    className?: string;
-    delayPerChar?: number; // ms
-    delayPerWord?: number; // ms
-}
+import styles from "./Typing.module.css";
 
 export default function Typing({
     text,
     className = "",
     delayPerChar = 0.05,
-    delayPerWord = 0.2,
+    delayPerWord = 0.05,
+    showCursor = true,
 }: TypingTextProps) {
     const [visibleText, setVisibleText] = useState("");
 
@@ -47,19 +43,19 @@ export default function Typing({
     return (
         <div className={`${styles.typingWrapper} ${className}`}>
             {visibleText}
-            <motion.span
-                className={styles.cursor}
-                animate={{
-                opacity: [1, 0],
-                }}
-                transition={{
-                repeat: Infinity,
-                duration: 0.7,
-                ease: "easeInOut",
-                }}
-            >
-                |
-            </motion.span>
+            {showCursor && (
+                <motion.span
+                    className={styles.cursor}
+                    animate={{ opacity: [1, 0] }}
+                    transition={{
+                        repeat: Infinity,
+                        duration: 0.7,
+                        ease: "easeInOut",
+                    }}
+                >
+                    |
+                </motion.span>
+            )}
         </div>
     );
 }

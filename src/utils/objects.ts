@@ -2,21 +2,19 @@ import type { TriangleData } from "../types";
 
 import { soberWord } from "./soberWord";
 import { laptop } from "./laptop";
+import { panic } from "./panic";
+import { superMan } from "./superMan";
+import { bridge } from "./bridge";
 
 export function getTrianglesData(section: number, explore: boolean): {
   mutated: Omit<TriangleData, "phase">[];
   target: Omit<TriangleData, "phase">[];
 } {
-  const width = window.innerWidth > 1150 ? window.innerWidth : 950;
-  const height = window.innerWidth > 1150 ? window.innerHeight : 740;
-  const baseWidth = 1150;
-  const baseHeight = 740;
-  const scaleX = width / baseWidth;
-  const scaleY = height / baseHeight;
-  const scale = Math.min(scaleX, scaleY);
+  const width = window.innerWidth;
+  const height = window.innerHeight;
 
   function scalePoint(point: { x: number; y: number }) {
-    return { x: point.x * scale, y: point.y * scale };
+    return { x: point.x, y: point.y};
   }
 
   const distance = 1500;
@@ -26,12 +24,23 @@ export function getTrianglesData(section: number, explore: boolean): {
     base = laptop;
   }
 
-  const target = base.map((triangle) => {
-    const x = triangle.x * scale;
-    const y = triangle.y * scale;
-    const size = triangle.size * scale;
+  if (explore && section === 1) {
+    base = panic;
+  }
 
-    // направление от центра
+  if (explore && section === 2) {
+    base = superMan;
+  }
+
+  if (explore && section === 3) {
+    base = bridge;
+  }
+
+  const target = base.map((triangle) => {
+    const x = triangle.x;
+    const y = triangle.y;
+    const size = triangle.size;
+
     const dirX = x;
     const dirY = y;
     const norm = Math.sqrt(dirX * dirX + dirY * dirY) || 1;

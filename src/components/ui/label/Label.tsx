@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, memo } from "react";
 
 import styles from "./Label.module.css";
 
@@ -70,4 +70,4 @@ const Label: React.FC<LabelProps> = ({ text, color, direction, isHovered }) => {
     )
 };
 
-export default Label;
+export default memo(Label);
