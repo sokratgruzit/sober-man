@@ -80,6 +80,7 @@ export default function Section2() {
 
   useAnimationFrame((t, delta) => {
     if (!isHovered && !initialLoad) {
+      console.log(t);
       const current = rotate.get();
       const next = current - (delta / 1000) * 6;
       rotate.set(next);
