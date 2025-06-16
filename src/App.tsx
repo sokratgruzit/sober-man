@@ -102,7 +102,7 @@ export default function App() {
   return (
     <div className={styles.container} style={{ background: !explore ? "#111" : colors[currentSection] }}>
       <BackgroundMusic src="/audio/awakening.mp3" />
-      <img src="sober3.jpg" alt="proto" className={styles.img} />
+      {/* <img src="sober3.jpg" alt="proto" className={styles.img} /> */}
       <Canvas />
       {explore && !intro && <Navigation />}
       {explore && !intro && <Settings />}
