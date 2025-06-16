@@ -12,10 +12,6 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 export const Canvas = () => {
   const [scaleFactor, setScaleFactor] = useState<number>(1);
-  const [canvasPos, setCanvasPos] = useState<React.CSSProperties>({
-    left: "0px",
-    top: "0px"
-  });
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const trianglesRef = useRef<TriangleData[]>([]);
@@ -25,11 +21,6 @@ export const Canvas = () => {
   const positionCanvas = (width: number, section: number, explore: boolean) => {
     if (!explore) {
       let s = .7;
-
-      setCanvasPos({
-        left: window.innerWidth / 2 - 750,
-        top: window.innerHeight / 2 - 750
-      });
 
       if (width <= 1024) s = .5;
       if (width <= 768) s = .4;
@@ -123,7 +114,7 @@ export const Canvas = () => {
       }
 
       setScaleFactor(s);
-      // setCanvasPos(pos);
+
       canvasControls.start({
         translateX: pos.left,
         translateY: pos.top,
