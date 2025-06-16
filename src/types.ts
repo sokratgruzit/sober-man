@@ -19,4 +19,17 @@ export interface TriangleData {
   targetRotation?: number;
   targetColor?: string;
   targetPoints?: Point[];
+  inactive?: boolean;
+  orbitAngle?: number;
+  orbitRadius?: number;
+  orbitSpeed?: number;
+  alpha?: number;
+}
+
+export interface TypingTextProps {
+  text: string;
+  className?: string;
+  delayPerChar?: number; 
+  delayPerWord?: number; 
+  showCursor?: boolean;
 }

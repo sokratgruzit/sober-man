@@ -102,7 +102,7 @@ export function Settings() {
         size="small"
         borderColor="#FFF"
         left="0px"
-        top={window.innerWidth < 768 ? "60px" : "100px"}
+        top={window.innerWidth <= 768 ? "60px" : "100px"}
         icon={<span 
           className={styles.soundIconWrap}
         >

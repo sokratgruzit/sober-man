@@ -51,6 +51,15 @@ html, body, #root {
   animation: scratchy 0.253s linear forwards infinite;
 }
 
+.title-l {
+  font-size: 5rem !important;
+}
+
+.descr-l {
+  font-size: 1.5rem !important;
+  line-height: 3rem !important;
+}
+
 @keyframes scratchy {
   0% {
     background-position: 0 0;
@@ -78,5 +87,43 @@ html, body, #root {
   }
   100% {
     background-position: 0 0;
+  }
+}
+
+@media (max-width: 1440px) {
+  .descr-l {
+    line-height: 2.3rem !important;
+  }
+}
+
+@media (max-width: 1280px) {
+  .title-l {
+    font-size: 4rem !important;
+  }
+
+  .descr-l {
+    font-size: 1.3rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .title-l {
+    font-size: 3rem !important;
+  }
+
+  .descr-l {
+    font-size: 1rem !important;
+    line-height: 1.2rem !important;
+  }
+}
+
+@media (max-width: 440px) {
+  .title-l {
+    font-size: 2.5rem !important;
+  }
+
+  .descr-l {
+    font-size: .8rem !important;
+    line-height: 1.2rem !important;
   }
 }

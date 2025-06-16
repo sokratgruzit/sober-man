@@ -20,14 +20,15 @@ export default function SectionIntro() {
     <div className={styles.container}>
       <Typing
         text="Добро пожаловать в Sober Man"
-        className={`${styles.title} texturedType`}
+        className={`${styles.title} title-l texturedType`}
+        showCursor={false}
       />
       {startSecondBlock && <Typing
         text="Многие срываются, потому что после клиники их встречает пустота — "
-        className={styles.subtitle}
+        className={`${styles.subtitle} descr-l`}
       />}
       <motion.span 
-        className={styles.endPhrase}
+        className={`${styles.endPhrase} descr-l`}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{

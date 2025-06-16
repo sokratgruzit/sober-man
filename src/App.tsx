@@ -10,6 +10,7 @@ import Button from "./components/ui/button/Button";
 import SectionIntro from "./components/sections/SectionIntro";
 import Section0 from "./components/sections/Section0";
 import Section1 from "./components/sections/Section1";
+import Section2 from "./components/sections/Section2";
 import BackgroundMusic from "./components/music/BackgroundMusic";
 
 import styles from "./App.module.css";
@@ -38,6 +39,7 @@ export default function App() {
     if (!explore && !intro) return <SectionIntro key="intro" />;
     if (explore && !intro && currentSection === 0) return <Section0 key="section0" />;
     if (explore && !intro && currentSection === 1) return <Section1 key="section1" />;
+    if (explore && !intro && currentSection === 2) return <Section2 key="section2" />;
     return null;
   };
 
@@ -67,8 +69,8 @@ export default function App() {
     };
 
     const handleWheel = (e: WheelEvent) => {
-      if (e.deltaY > 0) changeSection("up");
-      else if (e.deltaY < 0) changeSection("down");
+      if (e.deltaY > 0 && explore) changeSection("up");
+      else if (e.deltaY < 0 && explore) changeSection("down");
     };
 
     let touchStartY = 0;
@@ -80,7 +82,7 @@ export default function App() {
       const touchEndY = e.changedTouches[0].clientY;
       const diffY = touchStartY - touchEndY;
 
-      if (Math.abs(diffY) > 50) {
+      if (Math.abs(diffY) > 50 && explore) {
         if (diffY > 0) changeSection("up");
         else changeSection("down");
       }
@@ -100,7 +102,7 @@ export default function App() {
   return (
     <div className={styles.container} style={{ background: !explore ? "#111" : colors[currentSection] }}>
       <BackgroundMusic src="/audio/awakening.mp3" />
-      {/* <img src="sober0.jpg" alt="fuck" className={styles.img} /> */}
+      {/* <img src="sober3.jpg" alt="proto" className={styles.img} /> */}
       <Canvas />
       {explore && !intro && <Navigation />}
       {explore && !intro && <Settings />}

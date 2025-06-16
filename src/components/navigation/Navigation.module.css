@@ -1,6 +1,6 @@
 .container {
     position: absolute;
-    z-index: 100;
+    z-index: 10000;
     width: 300px;
     height: 100px;
 }
@@ -51,14 +51,14 @@
 
     .container {
         width: 200px;
-        height: 80px;
+        height: 40px;
     }
 
     .slideNumber {
-        width: 80px;
-        height: 80px;
-        font-size: 62px;
-        left: calc(50% - 40px);
+        width: 40px;
+        height: 40px;
+        font-size: 32px;
+        left: calc(50% - 20px);
         top: 0;
     }
 
@@ -69,8 +69,8 @@
     }
 
     .right {
-        top: calc(50% - 40px) !important;
-        left: calc(100% - 160px) !important;
+        top: calc(50% - 20px) !important;
+        left: calc(100% - 140px) !important;
         transform: translate(0) rotate(90deg) !important;
     }
 
