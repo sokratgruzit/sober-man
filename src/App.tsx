@@ -11,12 +11,14 @@ import SectionIntro from "./components/sections/SectionIntro";
 import Section0 from "./components/sections/Section0";
 import Section1 from "./components/sections/Section1";
 import Section2 from "./components/sections/Section2";
+import Section3 from "./components/sections/Section3";
+import Section4 from "./components/sections/Section4";
 import BackgroundMusic from "./components/music/BackgroundMusic";
 
 import styles from "./App.module.css";
 
 export default function App() {
-  const colors = ["#98BFF6", "#EDB948", "#63C5AB", "#F4696B", "#EF9F64", "#64d6e2", "#FDAED4", "#785ebb"];
+  const colors = ["#98BFF6", "#EDB948", "#63C5AB", "#EF9F64", "#F4696B", "#64d6e2", "#FDAED4", "#785ebb"];
 
   const { 
     explore, 
@@ -40,6 +42,8 @@ export default function App() {
     if (explore && !intro && currentSection === 0) return <Section0 key="section0" />;
     if (explore && !intro && currentSection === 1) return <Section1 key="section1" />;
     if (explore && !intro && currentSection === 2) return <Section2 key="section2" />;
+    if (explore && !intro && currentSection === 3) return <Section3 key="section3" />;
+    if (explore && !intro && currentSection === 4) return <Section4 key="section4" />;
     return null;
   };
 
@@ -102,7 +106,7 @@ export default function App() {
   return (
     <div className={styles.container} style={{ background: !explore ? "#111" : colors[currentSection] }}>
       <BackgroundMusic src="/audio/awakening.mp3" />
-      {/* <img src="sober3.jpg" alt="proto" className={styles.img} /> */}
+      {/* <img src="sober4.webp" alt="proto" className={styles.img} /> */}
       <Canvas />
       {explore && !intro && <Navigation />}
       {explore && !intro && <Settings />}

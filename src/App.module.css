@@ -7,10 +7,10 @@
 }
 
 .img {
-  width: 900px;
-  height: 700px;
-  left: calc(50% - 450px);
-  top: calc(50% - 350px);
+  width: 700px;
+  height: 500px;
+  left: calc(50% - 350px);
+  top: calc(50% - 250px);
   position: absolute;
   color: #4e4d4d;
 }
