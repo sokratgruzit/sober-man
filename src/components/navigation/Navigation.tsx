@@ -8,7 +8,7 @@ import Button from "../ui/button/Button";
 import styles from "./Navigation.module.css";
 
 export function Navigation() {
-  const colors = ["#98BFF6", "#EDB948", "#63C5AB", "#F4696B", "#EF9F64", "#64d6e2", "#FDAED4", "#785ebb"];
+  const colors = ["#98BFF6", "#EDB948", "#63C5AB", "#EF9F64", "#F4696B", "#64d6e2", "#FDAED4", "#785ebb"];
   const titles = [
     "Кто мы?",
     "История проекта",
@@ -173,7 +173,7 @@ export function Navigation() {
       />
       <div style={{ color: colors[currentSection] }} className={styles.slideNumber}>
         <motion.span animate={numberControls}>
-          {currentSection}  
+          {currentSection + 1}  
         </motion.span>
       </div>
       <Button

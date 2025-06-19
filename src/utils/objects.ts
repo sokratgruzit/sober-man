@@ -5,6 +5,7 @@ import { laptop } from "./laptop";
 import { panic } from "./panic";
 import { superMan } from "./superMan";
 import { bridge } from "./bridge";
+import { umbrella } from "./umbrella";
 
 export function getTrianglesData(section: number, explore: boolean): {
   mutated: Omit<TriangleData, "phase">[];
@@ -34,6 +35,10 @@ export function getTrianglesData(section: number, explore: boolean): {
 
   if (explore && section === 3) {
     base = bridge;
+  }
+
+  if (explore && section === 4) {
+    base = umbrella;
   }
 
   const target = base.map((triangle) => {

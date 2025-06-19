@@ -78,9 +78,8 @@ export default function Section2() {
     setActiveIndex(index);
   };
 
-  useAnimationFrame((t, delta) => {
+  useAnimationFrame((_, delta) => {
     if (!isHovered && !initialLoad) {
-      console.log(t);
       const current = rotate.get();
       const next = current - (delta / 1000) * 6;
       rotate.set(next);

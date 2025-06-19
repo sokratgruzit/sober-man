@@ -8,7 +8,7 @@ import Button from "../ui/button/Button";
 import styles from "./Settings.module.css";
 
 export function Settings() {
-  const colors = ["#98BFF6", "#EDB948", "#63C5AB", "#F4696B", "#EF9F64", "#64d6e2", "#FDAED4", "#785ebb"];
+  const colors = ["#98BFF6", "#EDB948", "#63C5AB", "#EF9F64", "#F4696B", "#64d6e2", "#FDAED4", "#785ebb"];
 
   const { 
     currentSection, 

@@ -12,6 +12,7 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 export const Canvas = () => {
   const [scaleFactor, setScaleFactor] = useState<number>(1);
+  const [distortion, setDistortion] = useState<number>(3);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const trianglesRef = useRef<TriangleData[]>([]);
@@ -38,16 +39,20 @@ export const Canvas = () => {
       });
     } else {
       let s = 1;
+      let dist = 3;
       let pos = {
         left: window.innerWidth / 2 - 750,
-        top: window.innerHeight / 2 - 750
+        top: window.innerHeight / 2 - 750,
+        rotate: 0
       };
 
       if (section === 0) {
         s = .4;
+        dist = 1;
         pos = {
           left: window.innerWidth / 2 - 750,
-          top: -626
+          top: -626,
+          rotate: 0
         };
 
         if (width >= 768) {
@@ -55,7 +60,8 @@ export const Canvas = () => {
 
           pos = {
             left: -480,
-            top: -482
+            top: -482,
+            rotate: 0
           };
         }
 
@@ -64,7 +70,8 @@ export const Canvas = () => {
 
           pos = {
             left: -445,
-            top: -490
+            top: -490,
+            rotate: 0
           };
         }
 
@@ -72,18 +79,21 @@ export const Canvas = () => {
           s = 1.5;
 
           pos = {
-            left: -273,
-            top: -391
+            left: -415,
+            top: -460,
+            rotate: 0
           };
         }
       }
 
       if (section === 1) {
         s = .6;
+        dist = 2;
           
         pos = {
           left: window.innerWidth - 835,
-          top: -536
+          top: -536,
+          rotate: 0
         };
 
         if (width >= 1150) {
@@ -91,7 +101,8 @@ export const Canvas = () => {
 
           pos = {
             left: window.innerWidth - 955,
-            top: -377
+            top: -377,
+            rotate: 0
           };
         }
 
@@ -100,24 +111,105 @@ export const Canvas = () => {
 
           pos = {
             left: window.innerWidth - 1020,
-            top: -250
+            top: -250,
+            rotate: 0
           };
         }
       }
 
       if (section === 2) {
         s = .4;
+        dist = 5;
 
         if (width >= 1150) {
           s = .6;
         }
       }
 
+      if (section === 3) {
+        s = .5;
+        dist = 1;
+
+        pos = {
+          left: window.innerWidth / 2 - 750,
+          top: -670,
+          rotate: 25
+        };
+
+        if (width >= 440) {
+          s = .8;
+
+          pos = {
+            left: window.innerWidth / 2 - 750,
+            top: -600,
+            rotate: 25
+          };
+        }
+
+        if (width >= 768) {
+          s = 1;
+        }
+
+        if (width >= 1150) {
+          s = 1;
+
+          pos = {
+            left: -340,
+            top: -470,
+            rotate: 0
+          };
+        }
+      }
+
+      if (section === 4) {
+        dist = 1;
+        
+        s = .4;
+
+        pos = {
+          left: window.innerWidth - 865,
+          top: -615,
+          rotate: -90
+        };
+
+        if (width >= 440) {
+          s = .6;
+
+          pos = {
+            left: window.innerWidth - 920,
+            top: -550,
+            rotate: -90
+          };
+        }
+
+        if (width >= 768) {
+          s = .8;
+
+          pos = {
+            left: window.innerWidth - 975,
+            top: -485,
+            rotate: -90
+          };
+        }
+
+        if (width >= 1150) {
+          s = 1;
+
+          pos = {
+            left: window.innerWidth - 1025,
+            top: -425,
+            rotate: -90
+          };
+        }
+      }
+
       setScaleFactor(s);
+      setDistortion(dist);
 
       canvasControls.start({
         translateX: pos.left,
         translateY: pos.top,
+        rotate: pos.rotate,
         transition: {
           duration: .5,
           ease: "easeInOut"
@@ -184,7 +276,7 @@ export const Canvas = () => {
 
         ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
 
-        const offsetY = Math.sin(elapsed * 2 + t.phase) * 3 * scale;
+        const offsetY = Math.sin(elapsed * 2 + t.phase) * distortion * scale;
         const drawX = t.x;
         const drawY = t.y + offsetY / scale;
 
@@ -230,7 +322,7 @@ export const Canvas = () => {
       cancelAnimationFrame(frameId);
       window.removeEventListener("resize", resize);
     };
-  }, [scaleFactor, currentSection, explore]);
+  }, [scaleFactor, currentSection, explore, distortion]);
 
   useEffect(() => {
     const { target } = getTrianglesData(currentSection, explore);
