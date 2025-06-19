@@ -1,6 +1,3 @@
-import { useEffect, useState, useRef } from "react";
-import { motion, useMotionValue, useTransform, useAnimationFrame, animate  } from "framer-motion";
-
 import Typing from "../typing/Typing";
 
 import styles from "./Section3.module.css";
