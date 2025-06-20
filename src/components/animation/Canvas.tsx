@@ -203,6 +203,48 @@ export const Canvas = () => {
         }
       }
 
+      if (section === 5) {
+        dist = 2;
+        
+        s = .4;
+
+        pos = {
+          left: window.innerWidth - 850,
+          top: window.innerHeight - 850,
+          rotate: 0
+        };
+
+        if (width >= 440) {
+          s = .6;
+
+          pos = {
+            left: window.innerWidth - 900,
+            top: window.innerHeight - 900,
+            rotate: 0
+          };
+        }
+
+        if (width >= 768) {
+          s = .8;
+
+          pos = {
+            left: window.innerWidth - 950,
+            top: window.innerHeight - 950,
+            rotate: 0
+          };
+        }
+
+        if (width >= 1150) {
+          s = 1;
+
+          pos = {
+            left: window.innerWidth - 1000,
+            top: window.innerHeight - 1000,
+            rotate: 0
+          };
+        }
+      }
+
       setScaleFactor(s);
       setDistortion(dist);
 

@@ -33,3 +33,16 @@ export interface TypingTextProps {
   delayPerWord?: number; 
   showCursor?: boolean;
 }
+
+interface Circle {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+  rotate: number;
+}
+
+export interface ConfProps {
+  circle1: Circle;
+  circle2: Circle;
+}
