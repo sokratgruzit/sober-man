@@ -3,12 +3,11 @@
     position: fixed;
     width: 100vw;
     z-index: 8000;
-    padding: 251px 150px 150px 120px;
     height: 100dvh;
-    padding-bottom: calc(120px + env(safe-area-inset-bottom)) !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 50px;
 }
 
@@ -21,32 +20,23 @@
 }
 
 .blockWrap {
-    position: absolute;
-    left: 120px;
-    width: 50%;
-    bottom: 150px;
+    position: relative;
+    width: 60%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 50px;
 }
 
 .descr1 {
     width: 100%;
-    color: #787878;
+    color: white;
     word-break: break-all;
-}
-
-.descr2 {
-    width: 100%;
-    color: rgb(211, 47, 47);
-    word-break: break-all;
+    text-align: center;
 }
 
 @media (max-width: 1440px) {
-    .container {
-        padding: 92px 150px 150px 120px;
-    }
-
     .title {
         font-size: 8rem;
     }
@@ -56,30 +46,11 @@
     .title {
         font-size: 5rem;
     }
-
-    .container {
-        padding: 150px 140px 30px 120px;
-        padding-bottom: calc(30px + env(safe-area-inset-bottom)) !important;
-    }
-
-    .blockWrap {
-        left: 120px;
-        width: calc(100% - 240px);
-    }
 }
 
 @media (max-width: 768px) {
     .title {
         font-size: 2rem;
         top: 16px;
-    }
-
-    .container {
-        padding: 242px 69px 30px 69px;
-    }
-
-    .blockWrap {
-        left: 80px;
-        width: calc(100% - 160px);
     }
 }

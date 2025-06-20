@@ -34,8 +34,8 @@ export function Navigation() {
   useEffect(() => {
     let position = "right";
 
-    if (currentSection === 1 || currentSection === 4 || currentSection === 5 || currentSection === 6 || currentSection === 7) position = "bottom";
-    if (currentSection === 2) position = "top";
+    if (currentSection === 1 || currentSection === 4 || currentSection === 6 || currentSection === 7) position = "bottom";
+    if (currentSection === 2 || currentSection === 5) position = "top";
 
     setNavPosition(position);
     setStylePosition("");

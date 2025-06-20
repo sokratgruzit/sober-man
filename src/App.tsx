@@ -1,7 +1,8 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 import { useAppStore } from "./store/useAppStore";
+import type { ConfProps } from "./types";
 
 import { Navigation } from "./components/navigation/Navigation";
 import { Settings } from "./components/settings/Settings";
@@ -22,6 +23,7 @@ export default function App() {
 
   const { 
     explore, 
+    windowWidth,
     setExplore, 
     intro, 
     currentSection, 
@@ -31,6 +33,24 @@ export default function App() {
 
   const isThrottledRef = useRef(false);
   const currentSectionRef = useRef(currentSection);
+  const circle1 = useAnimation();
+  const circle2 = useAnimation();
+  const [conf, setConf] = useState<ConfProps>({
+    circle1: {
+      left: 0,
+      top: 0,
+      width: 400,
+      height: 400,
+      rotate: 0
+    },
+    circle2: {
+      left: 0,
+      top: 0,
+      width: 400,
+      height: 400,
+      rotate: 0
+    }
+  });
 
   const handleExplore = () => {
     setExplore(true);
@@ -92,6 +112,245 @@ export default function App() {
       }
     };
 
+    if (explore) {
+      let height2 = 50;
+      let height1 = 30;
+      let width2 = 650;
+      let width1 = 200;
+      let left1 = windowWidth / 2 + 470;
+      let left2 = windowWidth / 2 + 80;
+      let top1 = 550;
+      let top2 = 580;
+      let rotate = -12;
+      let conf = {
+        circle1: {
+          left: 0,
+          top: 0,
+          width: 700,
+          height: 700,
+          rotate: 0
+        },
+        circle2: {
+          left: 0,
+          top: 0,
+          width: 700,
+          height: 700,
+          rotate: 0
+        }
+      };
+
+      if (currentSection === 0) {
+        width1 = 700;
+        width2 = 700;
+        height1 = 700;
+        height2 = 700;
+        rotate = 0;
+
+        if (windowWidth <= 1150) {
+          width1 = 500;
+          width2 = 500;
+          height1 = 500;
+          height2 = 500;
+        }
+
+        if (windowWidth <= 768) {
+          width1 = 300;
+          width2 = 300;
+          height1 = 300;
+          height2 = 300;
+        }
+
+        left1 = -width1 / 3;
+        top1 = -height1 / 3;
+        left2 = 0;
+        top2 = 0;
+      }
+
+      if (currentSection === 1) {
+        height1 = 30;
+        height2 = 50;
+        width1 = 200;
+        width2 = 550;
+        left1 = windowWidth - width1;
+        left2 = windowWidth - width2;
+        top1 = 560;
+        top2 = 590;
+        rotate = -12;
+        
+        if (windowWidth <= 1150) {
+          width1 = 80;
+          width2 = 235;
+          height1 = 15;
+          height2 = 20;
+          left1 = windowWidth - width1;
+          left2 = windowWidth - width2;
+          top1 = 285;
+          top2 = 300;
+        }
+      }
+
+      if (currentSection === 2) {
+        width1 = 400;
+        width2 = 400;
+        height1 = 400;
+        height2 = 400;
+        rotate = 0;
+
+        if (windowWidth <= 1150) {
+          width1 = 300;
+          width2 = 300;
+          height1 = 300;
+          height2 = 300;
+        }
+
+        if (windowWidth <= 768) {
+          width1 = 300;
+          width2 = 300;
+          height1 = 300;
+          height2 = 300;
+        }
+
+        left1 = windowWidth / 2 - width1 / 2 + 20;
+        left2 = windowWidth / 2 - width1 / 2 + 40;
+        top1 = window.innerHeight / 2 - height1 / 2;
+        top2 = window.innerHeight / 2 - height2 / 2 + 20;
+      }
+
+      if (currentSection === 3) {
+        height1 = 30;
+        height2 = 50;
+        width1 = 250;
+        width2 = 850;
+        left1 = 0;
+        left2 = 0;
+        top1 = 470;
+        top2 = 460;
+        rotate = 0;
+        
+        if (windowWidth <= 1150) {
+          width1 = windowWidth * 0.7;
+          width2 = windowWidth * 0.8;
+          height1 = 15;
+          height2 = 20;
+          top1 = 270;
+          top2 = 270;
+          left1 = windowWidth * 0.15;
+          left2 = windowWidth * 0.1;
+        }
+
+        if (windowWidth <= 440) {
+          width1 = windowWidth * 0.9;
+          width2 = windowWidth;
+          height1 = 15;
+          height2 = 20;
+          top1 = 150;
+          top2 = 150;
+          left1 = windowWidth * 0.05;
+          left2 = 0;
+        }
+      }
+
+      if (currentSection === 4) {
+        width1 = 700;
+        width2 = 600;
+        height1 = 700;
+        height2 = 600;
+        rotate = 0;
+
+        if (windowWidth <= 1150) {
+          width1 = 650;
+          width2 = 550;
+          height1 = 650;
+          height2 = 550;
+        }
+
+        if (windowWidth <= 768) {
+          width1 = 500;
+          width2 = 450;
+          height1 = 500;
+          height2 = 450;
+        }
+
+        if (windowWidth <= 448) {
+          width1 = 350;
+          width2 = 300;
+          height1 = 350;
+          height2 = 300;
+        }
+
+        left1 = windowWidth - width1 * 0.8;
+        top1 = -height1 * 0.2;
+        left2 = windowWidth - width2 * 0.8;
+        top2 = -height2 * 0.2;
+      }
+
+      if (currentSection === 5) {
+        width1 = 700;
+        width2 = 600;
+        height1 = 700;
+        height2 = 600;
+        rotate = 0;
+
+        if (windowWidth <= 1150) {
+          width1 = 650;
+          width2 = 550;
+          height1 = 650;
+          height2 = 550;
+        }
+
+        if (windowWidth <= 768) {
+          width1 = 500;
+          width2 = 450;
+          height1 = 500;
+          height2 = 450;
+        }
+
+        if (windowWidth <= 448) {
+          width1 = 350;
+          width2 = 300;
+          height1 = 350;
+          height2 = 300;
+        }
+
+        left1 = windowWidth - width1 * 0.8;
+        top1 = window.innerHeight - height1 * 0.8;
+        left2 = windowWidth - width2 * 0.8;
+        top2 = window.innerHeight - height2 * 0.8;
+      }
+
+      conf.circle1.width = width1;
+      conf.circle1.height = height1;
+      conf.circle1.left = left1;
+      conf.circle1.top = top1;
+      conf.circle1.rotate = rotate;
+
+      conf.circle2.width = width2;
+      conf.circle2.height = height2;
+      conf.circle2.left = left2;
+      conf.circle2.top = top2;
+      conf.circle2.rotate = rotate;
+
+      circle1.start({
+        translateX: conf.circle1.left,
+        translateY: conf.circle1.top,
+        rotate: conf.circle1.rotate,
+        transition: {
+          duration: .5
+        }
+      });
+
+      circle2.start({
+        translateX: conf.circle2.left,
+        translateY: conf.circle2.top,
+        rotate: conf.circle2.rotate,
+        transition: {
+          duration: .5
+        }
+      });
+
+      setConf(conf);
+    }
+
     window.addEventListener("wheel", handleWheel, { passive: true });
     window.addEventListener("touchstart", handleTouchStart, { passive: true });
     window.addEventListener("touchend", handleTouchEnd, { passive: true });
@@ -101,12 +360,22 @@ export default function App() {
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [setSection, currentSection, intro, explore]);
+  }, [setSection, currentSection, intro, explore, windowWidth]);
 
   return (
     <div className={styles.container} style={{ background: !explore ? "#111" : colors[currentSection] }}>
+      {explore && <motion.div 
+        className={styles.circle1} 
+        style={{ width: conf.circle1.width, height: conf.circle1.height }}
+        animate={circle1}
+      />}
+      {explore && <motion.div 
+        className={styles.circle2} 
+        style={{ width: conf.circle2.width, height: conf.circle2.height }}
+        animate={circle2}
+      />}
       <BackgroundMusic src="/audio/awakening.mp3" />
-      {/* <img src="sober4.webp" alt="proto" className={styles.img} /> */}
+      {/* <img src="sober5.webp" alt="proto" className={styles.img} /> */}
       <Canvas />
       {explore && !intro && <Navigation />}
       {explore && !intro && <Settings />}

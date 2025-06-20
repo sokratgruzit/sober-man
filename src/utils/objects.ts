@@ -6,6 +6,9 @@ import { panic } from "./panic";
 import { superMan } from "./superMan";
 import { bridge } from "./bridge";
 import { umbrella } from "./umbrella";
+import { micro, addSolidRingToMicro } from "./micro";
+
+let initializedMicro = false;
 
 export function getTrianglesData(section: number, explore: boolean): {
   mutated: Omit<TriangleData, "phase">[];
@@ -39,6 +42,57 @@ export function getTrianglesData(section: number, explore: boolean): {
 
   if (explore && section === 4) {
     base = umbrella;
+  }
+
+  if (explore && section === 5) {
+    if (!initializedMicro) {
+      initializedMicro = true;
+      addSolidRingToMicro(4, 4, 114, 8, "#03A9F4", 0.7, 3, -3, 16);
+      addSolidRingToMicro(0, 0, 114, 8, "#000000", 0.7, 3, -3, 16);
+
+      addSolidRingToMicro(4, 4, 90, 8, "#03A9F4", 0.7, 3, -3, 9);
+      addSolidRingToMicro(0, 0, 90, 8, "#000000", 0.7, 3, -3, 9);
+
+      addSolidRingToMicro(29, 171, 16, 6, "#03A9F4", 0.7, 3, -3, 7);
+      addSolidRingToMicro(25, 167, 16, 6, "#000000", 0.7, 3, -3, 7);
+      addSolidRingToMicro(-19, 201, 16, 6, "#03A9F4", 0.7, 3, -3, 7);
+      addSolidRingToMicro(-23, 197, 16, 6, "#000000", 0.7, 3, -3, 7);
+      addSolidRingToMicro(-177, 28, 16, 6, "#03A9F4", 0.7, 3, -3, 7);
+      addSolidRingToMicro(-181, 24, 16, 6, "#000000", 0.7, 3, -3, 7);
+      addSolidRingToMicro(-149, -67, 16, 6, "#03A9F4", 0.7, 3, -3, 7);
+      addSolidRingToMicro(-153, -71, 16, 6, "#000000", 0.7, 3, -3, 7);
+      addSolidRingToMicro(-20, -165, 16, 6, "#03A9F4", 0.7, 3, -3, 7);
+      addSolidRingToMicro(-24, -169, 16, 6, "#000000", 0.7, 3, -3, 7);
+      addSolidRingToMicro(28, -193, 16, 6, "#03A9F4", 0.7, 3, -3, 7);
+      addSolidRingToMicro(24, -197, 16, 6, "#000000", 0.7, 3, -3, 7);
+      addSolidRingToMicro(185, -20, 16, 6, "#03A9F4", 0.7, 3, -3, 7);
+      addSolidRingToMicro(181, -24, 16, 6, "#000000", 0.7, 3, -3, 7);
+      addSolidRingToMicro(154, 76, 16, 6, "#03A9F4", 0.7, 3, -3, 7);
+      addSolidRingToMicro(153, 72, 16, 6, "#000000", 0.7, 3, -3, 7);
+
+      addSolidRingToMicro(221, 78, 27, 6, "#03A9F4", 0.7, 3, -3, 13);
+      addSolidRingToMicro(217, 74, 27, 6, "#000000", 0.7, 3, -3, 13);
+      addSolidRingToMicro(203, -102, 27, 6, "#03A9F4", 0.7, 3, -3, 13);
+      addSolidRingToMicro(199, -106, 27, 6, "#000000", 0.7, 3, -3, 13);
+      addSolidRingToMicro(144, -209, 27, 6, "#03A9F4", 0.7, 3, -3, 13);
+      addSolidRingToMicro(140, -213, 27, 6, "#000000", 0.7, 3, -3, 13);
+      addSolidRingToMicro(-120, -211, 27, 6, "#03A9F4", 0.7, 3, -3, 13);
+      addSolidRingToMicro(-124, -215, 27, 6, "#000000", 0.7, 3, -3, 13);
+      addSolidRingToMicro(-213, -69, 27, 6, "#03A9F4", 0.7, 3, -3, 13);
+      addSolidRingToMicro(-217, -73, 27, 6, "#000000", 0.7, 3, -3, 13);
+      addSolidRingToMicro(-195, 110, 27, 6, "#03A9F4", 0.7, 3, -3, 13);
+      addSolidRingToMicro(-199, 106, 27, 6, "#000000", 0.7, 3, -3, 13);
+      addSolidRingToMicro(-135, 217, 27, 6, "#03A9F4", 0.7, 3, -3, 13);
+      addSolidRingToMicro(-139, 213, 27, 6, "#000000", 0.7, 3, -3, 13);
+      addSolidRingToMicro(127, 220, 27, 6, "#03A9F4", 0.7, 3, -3, 13);
+      addSolidRingToMicro(123, 216, 27, 6, "#000000", 0.7, 3, -3, 13);
+    }
+
+    micro.sort((a, b) =>
+      (a.color === "#03A9F4" ? -1 : 1) - (b.color === "#03A9F4" ? -1 : 1)
+    );
+
+    base = micro;
   }
 
   const target = base.map((triangle) => {

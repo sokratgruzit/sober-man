@@ -5,6 +5,8 @@ import styles from "./Section0.module.css";
 export default function Section0() {
   return (
     <div className={styles.container}>
+      <div className={styles.circle1} />
+      <div className={styles.circle2} />
       <Typing
         text="Кто мы?"
         className={`${styles.title} texturedType`}
