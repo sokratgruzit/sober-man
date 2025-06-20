@@ -14,6 +14,7 @@ import Section1 from "./components/sections/Section1";
 import Section2 from "./components/sections/Section2";
 import Section3 from "./components/sections/Section3";
 import Section4 from "./components/sections/Section4";
+import Section5 from "./components/sections/Section5";
 import BackgroundMusic from "./components/music/BackgroundMusic";
 
 import styles from "./App.module.css";
@@ -64,6 +65,7 @@ export default function App() {
     if (explore && !intro && currentSection === 2) return <Section2 key="section2" />;
     if (explore && !intro && currentSection === 3) return <Section3 key="section3" />;
     if (explore && !intro && currentSection === 4) return <Section4 key="section4" />;
+    if (explore && !intro && currentSection === 5) return <Section5 key="section5" />;
     return null;
   };
 
