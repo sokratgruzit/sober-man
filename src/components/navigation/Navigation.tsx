@@ -72,7 +72,7 @@ export function Navigation() {
 
     if (position === "bottom") {
       let x = window.innerWidth <= 768 ? window.innerWidth / 2 - 200 / 2 : window.innerWidth / 2 - 300 / 2;
-      let y = window.innerWidth <= 768 ? window.innerHeight - 110 : window.innerHeight - 130;
+      let y = window.innerWidth <= 768 ? window.innerHeight - 60 : window.innerHeight - 130;
 
       navControls.start({
         x: x,               

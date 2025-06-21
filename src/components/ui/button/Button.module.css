@@ -86,7 +86,8 @@
     height: 40px;
   }
 
-  .layer {
+  .layer,
+  .layer2 {
     border-width: 3px;
   }
 }
