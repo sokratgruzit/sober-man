@@ -26,7 +26,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 16px;
 }
 
 .descr1 {
@@ -38,8 +38,8 @@
 }
 
 svg {
-    width: 40px;
-    height: 40px;
+    width: 50px !important;
+    height: 50px !important;
 }
 
 @media (max-width: 1440px) {
@@ -58,5 +58,10 @@ svg {
     .title {
         font-size: 2rem;
         top: 16px;
+    }
+
+    svg {
+        width: 40px !important;
+        height: 40px !important;
     }
 }
