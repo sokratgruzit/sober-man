@@ -8,7 +8,7 @@ import Button from "../ui/button/Button";
 import styles from "./Navigation.module.css";
 
 export function Navigation() {
-  const colors = ["#98BFF6", "#EDB948", "#63C5AB", "#EF9F64", "#F4696B", "#64d6e2", "#FDAED4", "#785ebb"];
+  const colors = ["#98BFF6", "#EDB948", "#63C5AB", "#EF9F64", "#F4696B", "#64d6e2", "#FFFFF0"];
   const titles = [
     "Кто мы?",
     "История проекта",
@@ -16,7 +16,6 @@ export function Navigation() {
     "Зачем это нужно?",
     "Уникальность",
     "Куда пойдут средства?",
-    "Почему поддержать?",
     "Как поддержать",
   ];
 
@@ -34,8 +33,8 @@ export function Navigation() {
   useEffect(() => {
     let position = "right";
 
-    if (currentSection === 1 || currentSection === 4 || currentSection === 6 || currentSection === 7) position = "bottom";
-    if (currentSection === 2 || currentSection === 5) position = "top";
+    if (currentSection === 1 || currentSection === 4 || currentSection === 5 || currentSection === 6) position = "bottom";
+    if (currentSection === 2) position = "top";
 
     setNavPosition(position);
     setStylePosition("");
@@ -170,14 +169,15 @@ export function Navigation() {
         labelText={titles[currentSection - 1]}
         direction={navPosition !== "right" ? "right" : "right-rotate"}
         disabled={currentSection === 0}
+        section={currentSection}
       />
-      <div style={{ color: colors[currentSection] }} className={styles.slideNumber}>
+      <div style={{ color: colors[currentSection] }} className={currentSection < 6 ? styles.slideNumber : styles.slideNumber2}>
         <motion.span animate={numberControls}>
           {currentSection + 1}  
         </motion.span>
       </div>
       <Button
-        onClick={() => explore ? setSection(Math.min(7, currentSection + 1)) : null}
+        onClick={() => explore ? setSection(Math.min(6, currentSection + 1)) : null}
         size="small"
         borderColor="#FFF"
         left={window.innerWidth <= 768 ? "160px" : "240px"}
@@ -187,7 +187,8 @@ export function Navigation() {
         labelColor={colors[currentSection]}
         labelText={titles[currentSection + 1]}
         direction={navPosition !== "right" ? "left" : "right-rotate"}
-        disabled={currentSection === 7}
+        disabled={currentSection === 6}
+        section={currentSection}
       />
     </motion.div>
   );

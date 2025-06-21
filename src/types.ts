@@ -46,3 +46,39 @@ export interface ConfProps {
   circle1: Circle;
   circle2: Circle;
 }
+
+export interface ButtonProps {
+  text?: string;
+  onClick?: () => void;
+  size?: 'small' | 'medium' | 'large';
+  className?: string;
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+  borderColor?: string;
+  left?: string;
+  top?: string;
+  icon?: React.ReactNode;
+  bg?: string;
+  delay?: number;
+  labelText?: string;
+  labelColor?: string;
+  direction?: string;
+  section?: number;
+}
+
+export interface labelStyles {
+  color?: string;
+  left?: number;
+  right?: number;
+  transform?: string;
+  top?: number;
+  opacity?: number;
+}
+
+export interface LabelProps {
+  text?: string;
+  color?: string;
+  direction?: string;
+  isHovered?: boolean;
+  section?: number;
+}

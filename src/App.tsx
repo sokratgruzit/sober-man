@@ -15,12 +15,13 @@ import Section2 from "./components/sections/Section2";
 import Section3 from "./components/sections/Section3";
 import Section4 from "./components/sections/Section4";
 import Section5 from "./components/sections/Section5";
+import Section6 from "./components/sections/Section6";
 import BackgroundMusic from "./components/music/BackgroundMusic";
 
 import styles from "./App.module.css";
 
 export default function App() {
-  const colors = ["#98BFF6", "#EDB948", "#63C5AB", "#EF9F64", "#F4696B", "#64d6e2", "#FDAED4", "#785ebb"];
+  const colors = ["#98BFF6", "#EDB948", "#63C5AB", "#EF9F64", "#F4696B", "#64d6e2", "#FFFFF0"];
 
   const { 
     explore, 
@@ -66,6 +67,7 @@ export default function App() {
     if (explore && !intro && currentSection === 3) return <Section3 key="section3" />;
     if (explore && !intro && currentSection === 4) return <Section4 key="section4" />;
     if (explore && !intro && currentSection === 5) return <Section5 key="section5" />;
+    if (explore && !intro && currentSection === 6) return <Section6 key="section6" />;
     return null;
   };
 
@@ -85,7 +87,7 @@ export default function App() {
         clearTimeout(timeout);
       }, 1000); 
 
-      if (direction === "up" && currentSection < 7) {
+      if (direction === "up" && currentSection < 6) {
         setSection(currentSection + 1);
       }
       
@@ -318,6 +320,43 @@ export default function App() {
         top1 = window.innerHeight - height1 * 0.8;
         left2 = windowWidth - width2 * 0.8;
         top2 = window.innerHeight - height2 * 0.8;
+      }
+
+      if (currentSection === 6) {
+        width1 = 400;
+        width2 = 500;
+        height1 = 400;
+        height2 = 500;
+        rotate = 0;
+
+        left1 = windowWidth - width1 - 10;
+        top1 = -height1 * 0.25;
+        left2 = windowWidth - width2 + 35;
+        top2 = -height2 * 0.3;
+
+        if (windowWidth <= 980) {
+          width1 = 400;
+          width2 = 500;
+          height1 = 400;
+          height2 = 500;
+
+          left1 = windowWidth / 2 - width1 / 2 - 10;
+          top1 = 10;
+          left2 = windowWidth / 2 - width2 / 2 - 10;
+          top2 = -35;
+        }
+
+        if (windowWidth <= 440) {
+          width1 = 350;
+          width2 = 300;
+          height1 = 350;
+          height2 = 300;
+
+          left1 = windowWidth / 2 - width1 / 2;
+          top1 = -45;
+          left2 = windowWidth / 2 - width2 / 2;
+          top2 = -20;
+        }
       }
 
       conf.circle1.width = width1;
