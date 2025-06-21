@@ -177,8 +177,8 @@ export default function App() {
         width2 = 550;
         left1 = windowWidth - width1;
         left2 = windowWidth - width2;
-        top1 = 560;
-        top2 = 590;
+        top1 = window.innerHeight - 230;
+        top2 = window.innerHeight - 200;
         rotate = -12;
         
         if (windowWidth <= 1150) {
@@ -188,8 +188,8 @@ export default function App() {
           height2 = 20;
           left1 = windowWidth - width1;
           left2 = windowWidth - width2;
-          top1 = 285;
-          top2 = 300;
+          top1 = window.innerHeight - 175;
+          top2 = window.innerHeight - 160;
         }
       }
 

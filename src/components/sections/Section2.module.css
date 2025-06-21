@@ -280,4 +280,14 @@
         top: calc(100% - 180px);
         text-align: center;
     }
+
+    .icon2 {
+        left: 10px;
+        top: 8px;
+    }
+
+    .icon4 {
+        top: 12px;
+        left: 9px;
+    }
 }

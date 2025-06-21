@@ -91,7 +91,7 @@
     }
 
     .bottom {
-        top: calc(100% - 110px) !important;
+        top: calc(100% - 60px) !important;
         left: calc(50% - 100px) !important;
         transform: translate(0) rotate(0deg) !important;
     }

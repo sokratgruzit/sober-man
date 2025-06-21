@@ -92,7 +92,7 @@ export const Canvas = () => {
           
         pos = {
           left: window.innerWidth - 835,
-          top: -536,
+          top: window.innerHeight - 1000,
           rotate: 0
         };
 
@@ -101,17 +101,7 @@ export const Canvas = () => {
 
           pos = {
             left: window.innerWidth - 955,
-            top: -377,
-            rotate: 0
-          };
-        }
-
-        if (width >= 1440) {
-          s = 2;
-
-          pos = {
-            left: window.innerWidth - 1020,
-            top: -250,
+            top: window.innerHeight - 1170,
             rotate: 0
           };
         }
