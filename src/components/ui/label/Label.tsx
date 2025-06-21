@@ -1,24 +1,10 @@
 import { useState, useEffect, useRef, memo } from "react";
 
+import type { labelStyles, LabelProps } from "../../../types";
+
 import styles from "./Label.module.css";
 
-interface labelStyles {
-    color?: string;
-    left?: number;
-    right?: number;
-    transform?: string;
-    top?: number;
-    opacity?: number;
-}
-
-interface LabelProps {
-    text?: string;
-    color?: string;
-    direction?: string;
-    isHovered?: boolean;
-}
-
-const Label: React.FC<LabelProps> = ({ text, color, direction, isHovered }) => {
+const Label: React.FC<LabelProps> = ({ text, color, direction, isHovered, section = 0 }) => {
     const [labelWidth, setLabelWidth] = useState<number>(0);
     const [labelStyles, setLabelStyles] = useState<labelStyles>({
         left: 65, 
@@ -62,7 +48,7 @@ const Label: React.FC<LabelProps> = ({ text, color, direction, isHovered }) => {
     return (
         <div 
             ref={labelRef}
-            className={styles.container}
+            className={section === 6 ? styles.container2 : styles.container}
             style={labelStyles}
         >
             {text}

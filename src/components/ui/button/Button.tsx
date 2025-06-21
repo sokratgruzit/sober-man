@@ -2,27 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
+import type { ButtonProps } from '../../../types';
 import Label from '../label/Label';
 
 import styles from './Button.module.css';
-
-interface ButtonProps {
-    text?: string;
-    onClick?: () => void;
-    size?: 'small' | 'medium' | 'large';
-    className?: string;
-    disabled?: boolean;
-    type?: 'button' | 'submit' | 'reset';
-    borderColor?: string;
-    left?: string;
-    top?: string;
-    icon?: React.ReactNode;
-    bg?: string;
-    delay?: number;
-    labelText?: string;
-    labelColor?: string;
-    direction?: string;
-}
 
 const Button: React.FC<ButtonProps> = ({
     text,
@@ -39,7 +22,8 @@ const Button: React.FC<ButtonProps> = ({
     delay = 0,
     labelColor,
     labelText,
-    direction = "left"
+    direction = "left",
+    section = 0
 }) => {
     const [isHovered, setIsHovered] = useState<boolean>(false);
 
@@ -59,6 +43,12 @@ const Button: React.FC<ButtonProps> = ({
     };
     const handleMouseEnter = () => setIsHovered(true);
     const handleMouseLeave = () => setIsHovered(false);
+
+    let lStyle: any = { background: bg, borderColor: borderColor };
+
+    if (section === 6) {
+        lStyle = {};
+    }
 
     return (
         <motion.button
@@ -98,7 +88,7 @@ const Button: React.FC<ButtonProps> = ({
         >
             {disabled && <div className={styles.disabled} />}
             <motion.div
-                className={styles.layer}
+                className={styles.layer2}
                 whileHover={{
                     scale: 0.97,
                     boxShadow: 'inset 0 0 5px rgba(0,0,0,1)',
@@ -113,11 +103,11 @@ const Button: React.FC<ButtonProps> = ({
                     damping: 20,
                     duration: .7
                 }}
-                style={{ background: bg, borderColor: borderColor }}
+                style={lStyle}
             >
                 {text && text}
                 {icon && icon}
-                {!disabled && labelText && <Label isHovered={isHovered} direction={direction} text={labelText} color={labelColor} />}
+                {!disabled && labelText && <Label isHovered={isHovered} direction={direction} text={labelText} color={labelColor} section={section} />}
             </motion.div>
         </motion.button>
     );

@@ -245,6 +245,34 @@ export const Canvas = () => {
         }
       }
 
+      if (section === 6) {
+        s = .2;
+
+        pos = {
+          left: window.innerWidth / 2 - 750,
+          top: -640,
+          rotate: 0
+        };
+
+        if (width >= 440) {
+          s = .3;
+
+          pos = {
+            left: window.innerWidth / 2 - 750,
+            top: -570,
+            rotate: 0
+          };
+        }
+
+        if (width >= 980) {
+          pos = {
+            left: window.innerWidth - 950,
+            top: -650,
+            rotate: 0
+          };
+        }
+      }
+
       setScaleFactor(s);
       setDistortion(dist);
 
@@ -431,9 +459,5 @@ export const Canvas = () => {
     ref={canvasRef} 
     className={styles.canvas}
     animate={canvasControls} 
-    // style={{
-    //   top: canvasPos.top,
-    //   ...(currentSection === 0 ? { left: canvasPos.left } : { right: canvasPos.left }),
-    // }} 
   />;
 };

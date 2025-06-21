@@ -38,6 +38,21 @@
     transition: .7s;
 }
 
+.slideNumber2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    background-image: url("/images/green-texture.png");
+    font-size: 72px;
+    position: absolute;
+    left: calc(50% - 50px);
+    top: 0;
+    transition: .7s;
+}
+
 .icon {
     width: 45px;
     height: 45px;
@@ -54,7 +69,8 @@
         height: 40px;
     }
 
-    .slideNumber {
+    .slideNumber,
+    .slideNumber2 {
         width: 40px;
         height: 40px;
         font-size: 32px;

@@ -19,27 +19,25 @@
     font-size: 10rem;
 }
 
-.blockWrap {
-    position: relative;
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-}
-
 .descr1 {
     width: 100%;
     color: white;
     word-break: break-all;
-    display: flex;
-    gap: 10px;
+    font-size: 2rem;
+    text-align: center;
 }
 
 svg {
-    width: 40px;
-    height: 40px;
+    width: 70px;
+    height: 70px;
+}
+
+.supportBlock {
+    display: flex;
+    gap: 0px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
 }
 
 @media (max-width: 1440px) {
@@ -58,5 +56,13 @@ svg {
     .title {
         font-size: 2rem;
         top: 16px;
+    }
+
+    .supportBlock {
+        flex-direction: column;
+    }
+
+    .descr1 {
+        font-size: 1.5rem;
     }
 }

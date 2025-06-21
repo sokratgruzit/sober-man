@@ -51,6 +51,16 @@ html, body, #root {
   animation: scratchy 0.253s linear forwards infinite;
 }
 
+.texturedType2 {
+  background: url("/images/green-texture.png") center center repeat;
+  background-size: 80px 60px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: scratchy 0.253s linear forwards infinite;
+  -moz-animation: scratchy 0.253s linear forwards infinite;
+  animation: scratchy 0.253s linear forwards infinite;
+}
+
 .title-l {
   font-size: 5rem !important;
 }

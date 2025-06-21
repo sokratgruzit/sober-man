@@ -8,7 +8,7 @@ import Button from "../ui/button/Button";
 import styles from "./Settings.module.css";
 
 export function Settings() {
-  const colors = ["#98BFF6", "#EDB948", "#63C5AB", "#EF9F64", "#F4696B", "#64d6e2", "#FDAED4", "#785ebb"];
+  const colors = ["#98BFF6", "#EDB948", "#63C5AB", "#EF9F64", "#F4696B", "#64d6e2", "#FFFFF0"];
 
   const { 
     currentSection, 
@@ -95,7 +95,8 @@ export function Settings() {
         bg={colors[currentSection]}
         labelColor={colors[currentSection]}
         labelText="Прокрутить автоматически"
-        disabled={currentSection === 7}
+        disabled={currentSection === 6}
+        section={currentSection}
       />
       <Button
         onClick={() => setStartMusic(!startMusic)}
@@ -129,6 +130,7 @@ export function Settings() {
         bg={colors[currentSection]}
         labelColor={colors[currentSection]}
         labelText="Просмотреть со звуком"
+        section={currentSection}
       />
     </div>
   );
